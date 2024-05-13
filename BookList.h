@@ -14,3 +14,4 @@ void ChinhSuaThongTinSach(BookList *bookList);
 int MenuChinhSuaThongTinSach();
 BookNode *BookDuaTrenISBN(BookList *bookList, string ISBN);
 void ThayTheSach(BookList *&bookList, BookNode *bookNode);
+void XoaThongTinSach(BookList *&bookList); // xoa cmn node luon

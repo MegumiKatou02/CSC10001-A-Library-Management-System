@@ -70,7 +70,7 @@ void ChinhSuaThongTinSach(BookList *bookList) {
     string ISBN; cin >> ISBN;
     BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
     if(bookNode == nullptr) {
-        cout << "ISBN khong ton tai hoac khong dung dinh dang !";
+        cout << "ISBN khong ton tai hoac khong dung dinh dang !\n";
         return;
     }
     int option;
@@ -163,4 +163,32 @@ void ThayTheSach(BookList *&bookList, BookNode *bookNode) {
     }
     bookNode->next = current->next;
     delete current;
+}
+
+void XoaThongTinSach(BookList *&bookList) {
+    cout << "Nhap ISBN de chinh sua: ";
+    string ISBN; cin >> ISBN;
+    BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
+    if(bookNode == nullptr) {
+        cout << "ISBN khong ton tai hoac khong dung dinh dang !\n";
+        return;
+    }
+    BookNode *current = bookList->head;
+    BookNode *previous = nullptr;
+    while(current != nullptr && current->book.ISBN != ISBN) {
+        previous = current;
+        current = current->next;
+    }
+    if(current == nullptr) {
+        cout << "ISBN khong ton tai\n";
+        return;
+    }
+    if(previous == nullptr) {
+        bookList->head = current->next;
+    }
+    else {
+        previous->next = current->next;
+    }
+    delete current;
+    cout << "Xoa thanh cong thong tin sach <(\"\")";
 }
