@@ -6,3 +6,5 @@ struct BookList {
     BookNode *tail;
     BookList();
 };
+
+void DanhSachCacSachTrongThuVien(BookList *bookList);

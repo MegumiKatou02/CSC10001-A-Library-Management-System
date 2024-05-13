@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -13,3 +14,5 @@ struct Book {
 	double price;
 	int number;
 };
+
+void ThongTinQuyenSach(Book book);
