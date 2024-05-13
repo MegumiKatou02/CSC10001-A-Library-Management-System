@@ -1,6 +1,8 @@
 #include <iostream>
+#include "BookList.h"
 
-using namespace std;
+// khoi tao danh sach doc gia va sach
+BookList *bookList = new BookList();
 
 void intro() {
 	cout << "Phan mem quan ly thu vien." << endl;
@@ -30,6 +32,17 @@ int main_menu() {
 
 void reader_management(int option) {
 
+}
+
+void BookManagement(int option) {
+	switch(option) {
+	case 1: DanhSachCacSachTrongThuVien(bookList); break;
+	case 2: NhapThemSach(bookList); break;
+	case 3: XoaThongTinSach(bookList); break;
+	case 4: ChinhSuaThongTinSach(bookList); break;
+	case 5: TimKiemSachTheoISBN(bookList); break;
+	case 6: TimKiemSachTheoTenSach(bookList); break;
+	}
 }
 
 void quan_ly_sach(int option) {
@@ -72,17 +85,18 @@ int main() {
 		{
 			int choice;
 			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
-			cout << "     1. Them sach " << endl;
-			cout << "     2. Xoa thong tin sach " << endl;
-			cout << "     3. chinh sua thong tin sach" << endl;
-			cout << "     4. tim kiem sach theo ISBN" << endl;
-			cout << "     5. Tim kiem sach theo ten sach" << endl;
+			cout << "     1. Xem danh sach cac sach" << endl;
+			cout << "     2. Them sach " << endl;
+			cout << "     3. Xoa thong tin sach " << endl;
+			cout << "     4. chinh sua thong tin sach" << endl;
+			cout << "     5. tim kiem sach theo ISBN" << endl;
+			cout << "     6. Tim kiem sach theo ten sach" << endl;
 			cin >> choice;
 			while (choice < 1 || choice > 6)
 			{
 				cout << "Vui long chon lua chon phu hop";
 			}
-
+			BookManagement(choice);
 		}
 		case 3: lap_phieu_mua_sach();	break; // viet sau
 		case 4: lap_phieu_tra_sach();	break; // viet sau
