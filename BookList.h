@@ -8,3 +8,5 @@ struct BookList {
 };
 
 void DanhSachCacSachTrongThuVien(BookList *bookList);
+void ThemSach(BookList *bookList, Book book);
+void NhapThemSach(BookList *bookList);
