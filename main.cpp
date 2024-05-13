@@ -1,4 +1,6 @@
-#include "Library.h"
+#include <iostream>
+
+using namespace std;
 
 void intro() {
 	cout << "Phan mem quan ly thu vien." << endl;
