@@ -73,8 +73,9 @@ void ChinhSuaThongTinSach(BookList *bookList) {
         cout << "ISBN khong ton tai hoac khong dung dinh dang !\n";
         return;
     }
-    int option;
-    while(option = MenuChinhSuaThongTinSach()) {
+    int option; bool loop = true;
+    while(loop) {
+        option = MenuChinhSuaThongTinSach();
         switch(option) {
         case 1: {
             cout << "Ten sach: " << bookNode->book.name << "\n";
@@ -132,7 +133,7 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             ThayTheSach(bookList, bookNode);
             break;
         }
-        case 8: break;
+        case 8: loop = false; break;
         }
     }
 }
