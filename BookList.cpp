@@ -126,7 +126,7 @@ void ChinhSuaThongTinSach(BookList *bookList) {
         }
         case 7: {
             cout << "So quyen sach: " << bookNode->book.number << "\n";
-            cout << "Nhap nam xuat ban muon thay doi: ";
+            cout << "Nhap so quyen sach muon thay doi: ";
             int number; cin >> number;
             bookNode->book.number = number;
             ThayTheSach(bookList, bookNode);
