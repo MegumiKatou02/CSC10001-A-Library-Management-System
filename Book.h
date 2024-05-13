@@ -16,3 +16,4 @@ struct Book {
 };
 
 void ThongTinQuyenSach(Book book);
+int HashCodeBook(Book book);

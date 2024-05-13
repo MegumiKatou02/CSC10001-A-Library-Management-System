@@ -10,3 +10,7 @@ void ThongTinQuyenSach(Book book) {
     cout << "     Price: " << book.price << "\n";
     cout << "     Number: " << book.number << "\n";
 }
+
+int HashCodeBook(Book book) {
+    
+}
