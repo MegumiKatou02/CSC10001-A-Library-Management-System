@@ -215,8 +215,8 @@ void TimKiemSachTheoISBN(BookList *bookList) {
 
 void TimKiemSachTheoTenSach(BookList *bookList) {
     cout << "Nhap ten sach de tim kiem: ";
-    string name; cin >> name;
-    BookNode *bookNode = BookDuaTrenISBN(bookList, name);
+    string name; getline(cin >> ws, name);
+    BookNode *bookNode = BookDuaTrenTenSach(bookList, name);
     if(bookNode == nullptr) {
         cout << "Ten sach khong ton tai hoac khong dung dinh dang !\n";
         return;
