@@ -3,6 +3,7 @@
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
+#include "ultilty.h"
 
 using namespace std;
 
@@ -18,4 +19,6 @@ struct Book {
 };
 
 void ThongTinQuyenSach(Book book);
-int HashCodeBook(Book book);
+int HashBookCode(const string &s);
+string EncodeBookCode(Book book);
+string HashSixDigitCode(int num);
