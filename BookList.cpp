@@ -69,7 +69,7 @@ void ChinhSuaThongTinSach(BookList *bookList) {
     cout << "Nhap ISBN de chinh sua: ";
     string ISBN; cin >> ISBN;
     BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
-    if(bookNode == nullptr) {
+    if(bookNode == nullptr || bookNode->book.ISBN != ISBN) {
         cout << "ISBN khong ton tai hoac khong dung dinh dang !\n";
         return;
     }
