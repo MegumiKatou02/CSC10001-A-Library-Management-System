@@ -55,7 +55,7 @@ struct bookList {
 };
 
 // cac ham xu ly cac lua chon cua nguoi dung:
-int main_menu();
-void lap_phieu_mua_sach();
-void lap_phieu_tra_sach();
-void thong_ke();
+// int main_menu();
+// void lap_phieu_mua_sach();
+// void lap_phieu_tra_sach();
+// void thong_ke();
