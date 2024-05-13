@@ -1,4 +1,3 @@
-﻿
 #include "Library.h"
 
 void intro() {
