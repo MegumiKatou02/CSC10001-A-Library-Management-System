@@ -145,6 +145,14 @@ BookNode *BookDuaTrenISBN(BookList *bookList, string ISBN) {
     return current;
 }
 
+BookNode *BookDuaTrenTenSach(BookList *bookList, string name) {
+    BookNode *current = bookList->head;
+    while(current != nullptr && current->book.name != name) {
+        current = current->next;
+    }
+    return current;
+}
+
 void ThayTheSach(BookList *&bookList, BookNode *bookNode) {
     BookNode *current = bookList->head;
     BookNode *previous = nullptr;
@@ -166,7 +174,7 @@ void ThayTheSach(BookList *&bookList, BookNode *bookNode) {
 }
 
 void XoaThongTinSach(BookList *&bookList) {
-    cout << "Nhap ISBN de chinh sua: ";
+    cout << "Nhap ISBN de xoa thong tin: ";
     string ISBN; cin >> ISBN;
     BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
     if(bookNode == nullptr) {
@@ -191,4 +199,26 @@ void XoaThongTinSach(BookList *&bookList) {
     }
     delete current;
     cout << "Xoa thanh cong thong tin sach <(\"\")";
+}
+
+void TimKiemSachTheoISBN(BookList *bookList) {
+    cout << "Nhap ISBN de tim kiem: ";
+    string ISBN; cin >> ISBN;
+    BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
+    if(bookNode == nullptr) {
+        cout << "ISBN khong ton tai hoac khong dung dinh dang !\n";
+        return;
+    }
+    ThongTinQuyenSach(bookNode->book);
+}
+
+void TimKiemSachTheoTenSach(BookList *bookList) {
+    cout << "Nhap ten sach de tim kiem: ";
+    string name; cin >> name;
+    BookNode *bookNode = BookDuaTrenISBN(bookList, name);
+    if(bookNode == nullptr) {
+        cout << "Ten sach khong ton tai hoac khong dung dinh dang !\n";
+        return;
+    }
+    ThongTinQuyenSach(bookNode->book);
 }
