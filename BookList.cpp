@@ -34,7 +34,6 @@ void NhapThemSach(BookList *bookList) {
     for(int i = 1; i <= size; i++) {
         cout << "Nhap sach thu " << i << ": \n";
         Book book;
-        cout << "ISBN: "; cin >> book.ISBN;
         cout << "Name: "; getline(cin >> ws, book.name);
         cout << "Author: "; getline(cin >> ws, book.author);
         cout << "Publisher: "; getline(cin >> ws, book.publisher);
@@ -42,6 +41,11 @@ void NhapThemSach(BookList *bookList) {
         cout << "Type: "; getline(cin >> ws, book.type);
         cout << "Price: "; cin >> book.price;
         cout << "Number: "; cin >> book.number;
+        book.ISBN = EncodeBookCode(book);
         ThemSach(bookList, book); cout << "\n";
     }
+}
+
+void ChinhSuaThongTinSach(BookList *bookList) {
+    
 }

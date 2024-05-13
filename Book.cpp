@@ -1,5 +1,9 @@
 #include "Book.h"
 
+Book::Book() {
+    ISBN = "";
+}
+
 void ThongTinQuyenSach(Book book) {
     cout << "     ISBN: " << book.ISBN << "\n";
     cout << "     Name: " << book.name << "\n";

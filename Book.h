@@ -16,6 +16,7 @@ struct Book {
 	string type;
 	double price;
 	int number;
+	Book();
 };
 
 void ThongTinQuyenSach(Book book);
