@@ -12,5 +12,7 @@ void ThongTinQuyenSach(Book book) {
 }
 
 int HashCodeBook(Book book) {
-    
+    srand(time(nullptr));
+    int yearCode = book.yearPublish % 100;
+    int price = ((yearCode) / 10 != 0) ? yearCode : (rand() % 9 + 0) * 10 + book.yearPublish % 10;
 }
