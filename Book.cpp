@@ -29,7 +29,10 @@ string EncodeBookCode(Book book) {
     int hashValue = HashBookCode(input);
 
     string code = HashSixDigitCode(hashValue);
-
+    if(code[0] == '-') {
+        srand(time(nullptr));
+        code = to_string(rand() % 9 + 0) + code.substr(1);
+    }
     return code;
 }
 
