@@ -5,20 +5,20 @@
 BookList *bookList = new BookList();
 
 void intro() {
-	cout << "Phan mem quan ly thu vien." << endl;
-	cout << "viet boi anh ching dep trai va em duy gai alime nup gam giuong." << endl;
+	cout << "Phan mem quan ly thu vien (>.<)." << endl;
+	cout << "Viet boi anh Ching dep trai va em Duy gai alime nup gam giuong.\n" << endl;
 }
 
-int main_menu() {
+int MainMenu() {
 
 	// hien thong tin lua chon len man hinh
-	cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
 	cout << "     1. Quan ly doc gia" << endl;
 	cout << "     2. Quan ly sach" << endl;
 	cout << "     3. Lap phieu muon sach" << endl;
 	cout << "     4. Lap phieu tra sach" << endl;
 	cout << "     5. Thong ke" << endl;
 	cout << "     6. Thoat" << endl;
+	cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
 
 	// xu ly lenh cua nguoi dung 
 	int option;
@@ -30,8 +30,8 @@ int main_menu() {
 	return option; 
 }
 
-void reader_management(int option) {
-
+void ReaderManagement(int option) {
+	// Duy nay lam an cham chap the <(")
 }
 
 void BookManagement(int option) {
@@ -43,15 +43,6 @@ void BookManagement(int option) {
 	case 5: TimKiemSachTheoISBN(bookList); break;
 	case 6: TimKiemSachTheoTenSach(bookList); break;
 	}
-}
-
-void quan_ly_sach(int option) {
-
-	/*	b.Thêm sách
-		c.Chỉnh sửa thông tin một quyển sách
-		d.Xóa thông tin sách
-		e.Tìm kiếm sách theo ISBN
-		f.Tìm kiếm sách theo tên sác*/
 }
 
 void lap_phieu_mua_sach() {}
@@ -66,37 +57,47 @@ int main() {
 	int option; // lua chon o main menu
 	int choice;	// lua chon ben trong <(")
 
-	while (option = main_menu()) {
+	while (option = MainMenu()) {
 		// system("cls");
 		switch (option) {
 		case 1: {
-			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
+			cout << "\tQUAN LY DOC GIA\n";
 			cout << "     1. Xem danh sach doc gia trong thu vien " << endl;
 			cout << "     2. Chinh sua thong tin doc gia " << endl;
 			cout << "     3. Xoa thong tin doc gia" << endl;
-			cout << "     4. tim kiem doc gia theo CMND " << endl;
-			cout << "     5. Tim kiem doc gia theo ho ten " << endl;
+			cout << "     4. tim kiem doc gia theo CMND" << endl;
+			cout << "     5. Tim kiem doc gia theo ho ten" << endl;
+			cout << "     6. Thoat" << endl;
 			cin >> choice;
-			// system("cls");
-			reader_management(option);
+			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
+			while (choice < 1 || choice > 6)
+			{
+				cout << "Vui long chon lua chon phu hop";
+			}
+			if(choice == 6) continue;
+			ReaderManagement(option);
 			break;
 		}
 		case 2: 
 		{
 			int choice;
-			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
+			cout << "\tQUAN LY SACH\n";
 			cout << "     1. Xem danh sach cac sach" << endl;
 			cout << "     2. Them sach " << endl;
 			cout << "     3. Xoa thong tin sach " << endl;
 			cout << "     4. chinh sua thong tin sach" << endl;
 			cout << "     5. tim kiem sach theo ISBN" << endl;
 			cout << "     6. Tim kiem sach theo ten sach" << endl;
+			cout << "     7. Thoat" << endl;
+			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
 			cin >> choice;
-			while (choice < 1 || choice > 6)
+			while (choice < 1 || choice > 7)
 			{
-				cout << "Vui long chon lua chon phu hop";
+				cout << "Vui long chon lua chon phu hop\n";
 			}
+			if(choice == 7) continue;
 			BookManagement(choice);
+			break;
 		}
 		case 3: lap_phieu_mua_sach();	break; // viet sau
 		case 4: lap_phieu_tra_sach();	break; // viet sau
@@ -117,6 +118,8 @@ int main() {
 		if (toupper(next) == 'N')
 			return 0;
 	} 
+
+	delete bookList;
 
 	return 0;
 }
