@@ -127,10 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
+    <ClCompile Include="BookList.cpp" />
+    <ClCompile Include="BookNode.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Reader.cpp" />
+    <ClCompile Include="ReaderList.cpp" />
+    <ClCompile Include="ReaderNode.cpp" />
+    <ClCompile Include="ultilty.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Library.h" />
+    <ClInclude Include="Book.h" />
+    <ClInclude Include="BookList.h" />
+    <ClInclude Include="BookNode.h" />
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="Reader.h" />
+    <ClInclude Include="ReaderList.h" />
+    <ClInclude Include="ReaderNode.h" />
+    <ClInclude Include="ultilty.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
