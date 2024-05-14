@@ -9,7 +9,7 @@ void ThongTinDocGia(Reader reader) {
     case 1: cout << "male"; break;
     case 2: cout << "female"; break;
     case 3: cout << "other"; break;
-    case 4: cout << "undefined"; break;
+    case 4: default: cout << "underfined"; break;
     }
     cout << endl;
 
@@ -17,4 +17,9 @@ void ThongTinDocGia(Reader reader) {
     cout << "     Address " << reader.address << endl;
     cout << "     Start Date: " << reader.startDay.day << "/" << reader.startDay.month << "/" << reader.startDay.year << endl;
     cout << "     End Date: " << reader.endDay.day << "/" << reader.endDay.month << "/" << reader.endDay.year << endl;
+}
+
+Reader::Reader()
+{
+    this->code = "";
 }

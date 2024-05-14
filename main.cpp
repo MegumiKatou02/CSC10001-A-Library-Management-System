@@ -86,7 +86,8 @@ int main() {
 				cout << "Vui long chon lua chon phu hop";
 			}
 			if(choice == 7) continue;
-			ReaderManagement(option);
+			ReaderManagement(choice);
+			cout << "hello\n";
 			break;
 		}
 		case 2: 
@@ -131,6 +132,7 @@ int main() {
 	} 
 
 	delete bookList;
+	delete readerList;
 
 	return 0;
 }

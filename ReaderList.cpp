@@ -39,38 +39,40 @@ Date UpdateEndDay(Date start) {
 
 void NhapThemDocGia(ReaderList* list) {
     cout << "Nhap so luong doc gia can them: ";
-    int num; cin >> num;
+    unsigned int num; cin >> num;
     for (int i = 0; i < num; i++) {
         Reader reader;
         cout << "nhap thong tin nguoi doc moi: " << endl;
         // randomcode hoc cua anh ching sau nhe
-        cout << "nhap ten: "; cin.getline(reader.name, 19); cin.ignore();
-        cout << "Nhap ID: "; cin.getline(reader.ID, 19); cin.ignore();
-        cout << "Nhap gioi tinh: \n1. Nam \n2. Nu \n 3. Khac\n "; cin >> reader.gender ; cin.ignore();
-        cout << "nhap email: "; cin.getline(reader.email, 19); cin.ignore();
+        cout << "nhap ten: "; getline(cin >> ws, reader.name);
+        cout << reader.code << "\n";
+        cout << "Nhap ID: "; cin >> reader.ID;
+        cout << "Nhap gioi tinh: \n1. Nam \n2. Nu \n3. Khac\n4. Khong xac dinh\n"; cin >> reader.gender;
+        cout << "nhap email: "; cin >> reader.email;
+        cout << "nhap dia chi: "; getline(cin >> ws, reader.address);
         cout << "nhap thong tin the thu vien: " << endl;
-        cout << "nhap ngay dang ky: "; cin >> reader.startDay.day; cin.ignore();
-        cout << "nhap thang dang ky: "; cin >> reader.startDay.month; cin.ignore();
-        cout << "nhap nam dang ky: "; cin >> reader.startDay.year; cin.ignore();
+        cout << "nhap ngay dang ky: "; cin >> reader.startDay.day; 
+        cout << "nhap thang dang ky: "; cin >> reader.startDay.month;
+        cout << "nhap nam dang ky: "; cin >> reader.startDay.year; 
         reader.endDay = UpdateEndDay(reader.startDay); 
 
         ThemDocGia(list, reader);
-
+        // cout << SizeReader(list) << " - size\n";  
         char ch;
         cout << "ban muon nhap them doc gia khac khong? (y/n): ";
         cin >> ch;
-        while (toupper(ch) != 'Y' || toupper(ch) != 'N') {
+        while (toupper(ch) != 'Y' && toupper(ch) != 'N') {
             cout << "vui long nhap y hoac n: ";
             cin >> ch;
         }
-        if (toupper(ch) == 'N')
+        if (toupper(ch) == 'N') {
             return;
+        }
     }
 }
 
-void ThemDocGia(ReaderList* readerList, Reader reader) {
+void ThemDocGia(ReaderList *readerList, Reader reader) {
     ReaderNode* newReader = new ReaderNode(reader);
-    newReader->reader = reader;
     if (readerList->head == NULL) {
         readerList->head = newReader;
     }
@@ -78,20 +80,19 @@ void ThemDocGia(ReaderList* readerList, Reader reader) {
         readerList->tail->next = newReader;
     }
     readerList->tail = newReader;
-    readerList->tail->next = NULL;
 }
 
-ReaderNode* FindByName(ReaderList* list, char name[]) {
+ReaderNode* FindByName(ReaderList* list, string name) {
     ReaderNode* curReader = list->head;
-    while (curReader != NULL && strcmp(curReader->reader.name, name) != 0) {
+    while (curReader != NULL && curReader->reader.name != name) {
         curReader = curReader->next;
     }
     return curReader;
 }
 
-ReaderNode* FindByID(ReaderList* list, char ID[]) {
+ReaderNode* FindByID(ReaderList* list, string ID) {
     ReaderNode* curReader = list->head;
-    while (curReader != NULL && strcmp(curReader->reader.ID, ID) != 0) {
+    while (curReader != NULL && curReader->reader.ID != ID) {
         curReader = curReader->next;
     }
     return curReader;
@@ -115,9 +116,9 @@ int ReaderInfoChangeOption() {
 
 void ReaderInfoChanging(ReaderList* list) {
     cout << "Nhap ten doc gia can chinh sua thong tin: ";
-    char name[20]; cin.getline(name, 19);
+    string name; getline(cin >> ws, name);
     ReaderNode* fReader = FindByName(list, name);
-    if (fReader == NULL || strcmp(fReader->reader.name, name) != 0) {
+    if (fReader == NULL || fReader->reader.name != name) {
         cout << "Ten doc gia nhap vao khong ton tai hoac chua duoc dang ky!";
         return;
     }
@@ -125,22 +126,22 @@ void ReaderInfoChanging(ReaderList* list) {
         int option = ReaderInfoChangeOption();
         switch (option) {
         case 1: {
-            char newName[20];
+            string newName;
             cout << "Nhap vao ho ten moi cua doc gia: ";
-            cin.getline(newName, 19);
-            strcpy(fReader->reader.name, newName);
+            getline(cin >> ws, newName);
+            fReader->reader.name = newName;
             break;
         }
         case 2: {
             cout << "Nhap vao dia chi email moi: ";
-            char newEmail[20]; cin.getline(newEmail, 19);
-            strcpy(fReader->reader.email, newEmail);
+            string newEmail; cin >> newEmail;
+            fReader->reader.email = newEmail;
             break;
         }
         case 3: {
             cout << "Nhap ma so sinh vien moi cua doc gia: ";
-            char newID[12]; cin.getline(newID, 11);
-            strcpy(fReader->reader.ID, newID);
+            string newID; cin >> newID;
+            fReader->reader.ID = newID;
             break;
         }
         case 4: {
@@ -152,22 +153,22 @@ void ReaderInfoChanging(ReaderList* list) {
                 cin >> newGender;
             }
             fReader->reader.gender = newGender;
+            break;
         }
         case 5: {
             cout << "Nhap dia chi moi cua doc gia: ";
-            char newAddress[36]; cin.getline(newAddress, 35);
-            strcpy(fReader->reader.address, newAddress);
+            string newAddress; getline(cin >> ws, newAddress);
+            fReader->reader.address = newAddress;
             break;
         }
         }
 
         char ch;
         cout << "ban muon tiep tuc chinh sua thong tin khong? (y/n)";
-        cin.get(ch);
-        while (toupper(ch) != 'Y' || toupper(ch) != 'N') {
+        cin >> ch;
+        while (toupper(ch) != 'Y' && toupper(ch) != 'N') {
             cout << "vui long nhap y hoac n.";
-            cin.get(ch);
-            cin.ignore();
+            cin >> ch;
         }
         if (toupper(ch) == 'N')
             return;
@@ -176,7 +177,7 @@ void ReaderInfoChanging(ReaderList* list) {
 
 void UserFindReaderByName(ReaderList* list) {
     cout << "Nhap ten doc gia ban muon tim kiem: ";
-    char fName[20]; cin.getline(fName, 19);
+    string fName; getline(cin >> ws, fName);
     ReaderNode* fNode = FindByName(list, fName);
     if (fNode == NULL) {
         cout << "Khong ton tai doc gia co ten trung khop voi ten da nhap!" << endl;
@@ -189,7 +190,7 @@ void UserFindReaderByName(ReaderList* list) {
 
 void UserFindReaderByID(ReaderList* list) {
     cout << "Nhap CMND cua doc gia ban can tim: ";
-    char fID[12]; cin.getline(fID, 11);
+    string fID; cin >> fID;
     ReaderNode* fNode = FindByID(list, fID);
     if (fNode == NULL) {
         cout << "Khong ton tai doc gia co CMND trung khop voi CMND da nhap!" << endl;
@@ -198,4 +199,16 @@ void UserFindReaderByID(ReaderList* list) {
     else {
         ThongTinDocGia(fNode->reader);
     }
+}
+
+int SizeReader(ReaderList *list) 
+{
+    int count = 0;
+    ReaderNode *current = list->head;
+    while(current != nullptr)
+    {
+        count++;
+        current = current->next;
+    }
+    return count;
 }
