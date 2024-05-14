@@ -115,7 +115,7 @@ int main() {
 			cout << "vui long nhap N hoac Y.";
 			cin >> next;
 		}
-		if (toupper(next) == 'N')
+		if (toupper(next) == 'N') 
 			return 0;
 	} 
 
