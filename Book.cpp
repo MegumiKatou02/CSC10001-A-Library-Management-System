@@ -33,7 +33,7 @@ string EncodeBookCode(Book book) {
         srand(time(nullptr));
         code = to_string(rand() % 9 + 0) + code.substr(1);
     }
-    return code;
+    return (code.length() > 6) ? code.substr(0, 6) : code;
 }
 
 string HashSixDigitCode(int num) {
