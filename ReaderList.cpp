@@ -43,9 +43,8 @@ void NhapThemDocGia(ReaderList* list) {
     for (int i = 0; i < num; i++) {
         Reader reader;
         cout << "nhap thong tin nguoi doc moi: " << endl;
-        // randomcode hoc cua anh ching sau nhe
+        // randomcode hoc cua anh ching sau nhe - anh Ching lam roi nhe
         cout << "nhap ten: "; getline(cin >> ws, reader.name);
-        cout << reader.code << "\n";
         cout << "Nhap ID: "; cin >> reader.ID;
         cout << "Nhap gioi tinh: \n1. Nam \n2. Nu \n3. Khac\n4. Khong xac dinh\n"; cin >> reader.gender;
         cout << "nhap email: "; cin >> reader.email;
@@ -55,7 +54,8 @@ void NhapThemDocGia(ReaderList* list) {
         cout << "nhap thang dang ky: "; cin >> reader.startDay.month;
         cout << "nhap nam dang ky: "; cin >> reader.startDay.year; 
         reader.endDay = UpdateEndDay(reader.startDay); 
-
+        reader.code = EncodeReaderCode(reader);
+        
         ThemDocGia(list, reader);
         // cout << SizeReader(list) << " - size\n";  
         char ch;

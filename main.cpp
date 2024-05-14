@@ -87,7 +87,6 @@ int main() {
 			}
 			if(choice == 7) continue;
 			ReaderManagement(choice);
-			cout << "hello\n";
 			break;
 		}
 		case 2: 

@@ -5,6 +5,9 @@
 #include "Date.h"
 #include <iostream>
 #include <cstring>
+#include <ctime>
+#include <cstdlib>
+
 using namespace std;
 struct Reader {
 	string code;
@@ -20,3 +23,6 @@ struct Reader {
 };
 
 void ThongTinDocGia(Reader reader);
+int HashReaderCode(const string &s);
+string EncodeReaderCode(Reader reader);
+string HashSixDigitCodeR(int num);
