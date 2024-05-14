@@ -4,12 +4,5 @@
 struct ReaderNode {
 	Reader reader;
 	ReaderNode* next;
-
+	ReaderNode(Reader reader);
 };
-struct ReaderList {
-	ReaderNode* head;
-	ReaderNode* tail;
-};
-
-
-

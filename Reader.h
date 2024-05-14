@@ -1,8 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <iostream>
 #include <cstring>
 #include "Date.h"
-#include "ReaderNode.h"
+#include <iostream>
+#include <cstring>
 using namespace std;
 struct Reader {
 	char code[12];
@@ -17,10 +19,3 @@ struct Reader {
 };
 
 void ThongTinDocGia(Reader reader);
-void DanhSachDocGia(ReaderList* readerList);
-ReaderNode* FindByName(ReaderList* list, char name[]);
-Date UpdateEndDay(Date start);
-void NhapThemDocGia(ReaderList* list);
-void ThemDocGia(ReaderList* readerList, Reader reader);
-int ReaderInfoChangeOption();
-void ReaderInfoChanging(ReaderList* list);

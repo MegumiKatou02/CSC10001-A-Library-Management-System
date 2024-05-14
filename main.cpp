@@ -1,8 +1,9 @@
 #include <iostream>
 #include "BookList.h"
-
+#include "ReaderList.h"
 // khoi tao danh sach doc gia va sach
 BookList *bookList = new BookList();
+ReaderList* readerList = new ReaderList();
 
 void intro() {
 	cout << "Phan mem quan ly thu vien (>.<)." << endl;
@@ -31,8 +32,16 @@ int MainMenu() {
 }
 
 void ReaderManagement(int option) {
-	// Duy nay lam an cham chap the <(")
+	switch (option) {
+	case 1: DanhSachDocGia(readerList); break;
+	case 2: NhapThemDocGia(readerList); break;
+	case 3: ReaderInfoChanging(readerList); break;
+	case 4: UserFindReaderByID(readerList); break;
+	case 5: UserFindReaderByName(readerList); break;
+	case 6: UserFindReaderByID(readerList); break;
+	}
 }
+
 
 void BookManagement(int option) {
 	switch(option) {
@@ -63,18 +72,20 @@ int main() {
 		case 1: {
 			cout << "\tQUAN LY DOC GIA\n";
 			cout << "     1. Xem danh sach doc gia trong thu vien " << endl;
-			cout << "     2. Chinh sua thong tin doc gia " << endl;
-			cout << "     3. Xoa thong tin doc gia" << endl;
-			cout << "     4. tim kiem doc gia theo CMND" << endl;
-			cout << "     5. Tim kiem doc gia theo ho ten" << endl;
-			cout << "     6. Thoat" << endl;
-			cin >> choice;
+			cout << "     2. Them thong tin mot doc gia " << endl;
+			cout << "     3. Chinh sua thong tin doc gia " << endl;
+			cout << "     4. Xoa thong tin doc gia" << endl;
+			cout << "     5. tim kiem doc gia theo CMND" << endl;
+			cout << "     6. Tim kiem doc gia theo ho ten" << endl;
+			cout << "     7. Thoat" << endl;
+
 			cout << "Nhap vao lua chon ma ban muon thuc hien:" << endl;
-			while (choice < 1 || choice > 6)
+			cin >> choice;
+			while (choice < 1 || choice > 7)
 			{
 				cout << "Vui long chon lua chon phu hop";
 			}
-			if(choice == 6) continue;
+			if(choice == 7) continue;
 			ReaderManagement(option);
 			break;
 		}
