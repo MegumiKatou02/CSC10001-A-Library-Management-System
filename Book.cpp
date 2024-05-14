@@ -42,5 +42,5 @@ string HashSixDigitCode(int num) {
     while (code.length() < 6) {
         code = "0" + code;
     }
-    return code;
+    return (code.length() > 6) ? code.substr(0, 6) : code;
 }
