@@ -82,7 +82,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap ten sach muon thay doi: ";
             string name; getline(cin >> ws, name);
             bookNode->book.name = name;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 2: {
@@ -90,7 +89,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap ten tac gia muon thay doi: ";
             string author; getline(cin >> ws, author);
             bookNode->book.author = author;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 3: {
@@ -98,7 +96,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap ten nha xuat ban muon thay doi: ";
             string publisher; getline(cin >> ws, publisher);
             bookNode->book.publisher = publisher;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 4: {
@@ -106,7 +103,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap nam xuat ban muon thay doi: ";
             int yearPublish; cin >> yearPublish;
             bookNode->book.yearPublish = yearPublish;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 5: {
@@ -114,7 +110,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap ten the loai muon thay doi: ";
             string type; getline(cin >> ws, type);
             bookNode->book.type = type;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 6: {
@@ -122,7 +117,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap gia sach muon thay doi: ";
             double price; cin >> price;
             bookNode->book.price = price;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 7: {
@@ -130,7 +124,6 @@ void ChinhSuaThongTinSach(BookList *bookList) {
             cout << "Nhap so quyen sach muon thay doi: ";
             int number; cin >> number;
             bookNode->book.number = number;
-            ThayTheSach(bookList, bookNode);
             break;
         }
         case 8: loop = false; break;
@@ -152,26 +145,6 @@ BookNode *BookDuaTrenTenSach(BookList *bookList, string name) {
         current = current->next;
     }
     return current;
-}
-
-void ThayTheSach(BookList *&bookList, BookNode *bookNode) {
-    BookNode *current = bookList->head;
-    BookNode *previous = nullptr;
-    while(current != nullptr && bookNode->book.ISBN != current->book.ISBN) {
-        previous = current;
-        current = current->next;
-    }
-    if(current == nullptr) {
-        return;
-    }
-    if(previous == nullptr) {
-        bookList->head = bookNode;
-    }
-    else {
-        previous->next = bookNode;
-    }
-    bookNode->next = current->next;
-    delete current;
 }
 
 void XoaThongTinSach(BookList *&bookList) {
@@ -199,7 +172,7 @@ void XoaThongTinSach(BookList *&bookList) {
         previous->next = current->next;
     }
     delete current;
-    cout << "Xoa thanh cong thong tin sach <(\"\")";
+    cout << "Xoa thanh cong thong tin sach <(\")\n";
 }
 
 void TimKiemSachTheoISBN(BookList *bookList) {
@@ -215,8 +188,8 @@ void TimKiemSachTheoISBN(BookList *bookList) {
 
 void TimKiemSachTheoTenSach(BookList *bookList) {
     cout << "Nhap ten sach de tim kiem: ";
-    string name; cin >> name;
-    BookNode *bookNode = BookDuaTrenISBN(bookList, name);
+    string name; getline(cin >> ws, name);
+    BookNode *bookNode = BookDuaTrenTenSach(bookList, name);
     if(bookNode == nullptr) {
         cout << "Ten sach khong ton tai hoac khong dung dinh dang !\n";
         return;
