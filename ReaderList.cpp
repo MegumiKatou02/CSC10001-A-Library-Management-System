@@ -1,5 +1,5 @@
 #include "ReaderList.h"
-
+#include <string>
 ReaderList::ReaderList() {
     head = tail = nullptr;
 }

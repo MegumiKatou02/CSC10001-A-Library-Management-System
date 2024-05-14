@@ -4,7 +4,7 @@
 #include <cstring>
 #include "Date.h"
 #include <iostream>
-#include <cstring>
+#include <string>
 #include <ctime>
 #include <cstdlib>
 

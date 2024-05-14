@@ -135,6 +135,7 @@
     <ClCompile Include="ReaderList.cpp" />
     <ClCompile Include="ReaderNode.cpp" />
     <ClCompile Include="ultilty.cpp" />
+    <ClCompile Include="WriteFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="ReaderList.h" />
     <ClInclude Include="ReaderNode.h" />
     <ClInclude Include="ultilty.h" />
+    <ClInclude Include="WriteFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
