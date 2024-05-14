@@ -55,7 +55,7 @@ void NhapThemDocGia(ReaderList* list) {
         cout << "nhap nam dang ky: "; cin >> reader.startDay.year; 
         reader.endDay = UpdateEndDay(reader.startDay); 
         reader.code = EncodeReaderCode(reader);
-        
+
         ThemDocGia(list, reader);
         // cout << SizeReader(list) << " - size\n";  
         char ch;
@@ -189,7 +189,7 @@ void UserFindReaderByName(ReaderList* list) {
 }
 
 void UserFindReaderByID(ReaderList* list) {
-    cout << "Nhap CMND cua doc gia ban can tim: ";
+    cout << "Nhap ID cua doc gia ban can tim: ";
     string fID; cin >> fID;
     ReaderNode* fNode = FindByID(list, fID);
     if (fNode == NULL) {
@@ -211,4 +211,32 @@ int SizeReader(ReaderList *list)
         current = current->next;
     }
     return count;
+}
+
+void DeleteInformationReader(ReaderList *&list) {
+    cout << "Nhap ID de xoa thong tin: ";
+    string ID; cin >> ID;
+    ReaderNode *readerNode = FindByID(list, ID);
+    if(readerNode == nullptr) {
+        cout << "ID khong ton tai hoac khong dung dinh dang !\n";
+        return;
+    }
+    ReaderNode *current = list->head;
+    ReaderNode *previous = nullptr;
+    while(current != nullptr && current->reader.ID != ID) {
+        previous = current;
+        current = current->next;
+    }
+    if(current == nullptr) {
+        cout << "ID khong ton tai\n";
+        return;
+    }
+    if(previous == nullptr) {
+        list->head = current->next;
+    }
+    else {
+        previous->next = current->next;
+    }
+    delete current;
+    cout << "Xoa thanh cong thong tin doc gia <(\")\n";
 }

@@ -36,9 +36,9 @@ void ReaderManagement(int option) {
 	case 1: DanhSachDocGia(readerList); break;
 	case 2: NhapThemDocGia(readerList); break;
 	case 3: ReaderInfoChanging(readerList); break;
-	case 4: UserFindReaderByID(readerList); break;
-	case 5: UserFindReaderByName(readerList); break;
-	case 6: UserFindReaderByID(readerList); break;
+	case 4: DeleteInformationReader(readerList); break;
+	case 5: UserFindReaderByID(readerList); break;
+	case 6: UserFindReaderByName(readerList); break;
 	}
 }
 
