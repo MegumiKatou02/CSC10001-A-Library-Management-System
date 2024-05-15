@@ -55,16 +55,12 @@ void BookManagement(int option) {
 	}
 }
 
-void lap_phieu_mua_sach() {}
-
-void lap_phieu_tra_sach() {}
-
-void thong_ke() {}
-
 int main() {
 	intro();
+
 	InputReaderFromFile(readerList);
 	InputBooksFromFile(bookList);
+	
 	int option; // lua chon o main menu
 	int choice;	// lua chon ben trong <(")
 
@@ -112,9 +108,9 @@ int main() {
 			BookManagement(choice);
 			break;
 		}
-		case 3: lap_phieu_mua_sach();	break; // viet sau
-		case 4: lap_phieu_tra_sach();	break; // viet sau
-		case 5: thong_ke();				break; // viet sau
+		case 3: break; // viet sau
+		case 4: break; // viet sau
+		case 5: break; // viet sau
 		case 6: return 0;
 		default: break;
 
@@ -133,6 +129,7 @@ int main() {
 	} 
 	WriteReaderToFile(readerList);
 	WriteBooksToFile(bookList);
+
 	delete bookList;
 	delete readerList;
 
