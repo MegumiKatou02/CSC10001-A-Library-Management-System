@@ -81,6 +81,7 @@ void WriteBooksToFile(BookList* list) {
 		return;
 	}
 	BookNode* curBook = list->head;
+	int n = 0;
 	while (curBook != NULL) {
 		ofs << curBook->book.ISBN << ",";
 		ofs << curBook->book.name << ",";
@@ -89,8 +90,39 @@ void WriteBooksToFile(BookList* list) {
 		ofs << curBook->book.yearPublish << ",";
 		ofs << curBook->book.type << ",";
 		ofs << curBook->book.price << ",";
-		ofs << curBook->book.number << endl;
+		ofs << curBook->book.number << ",";
 		curBook = curBook->next;
+		n++;
 	}
+	ofs << n;
 	ofs.close();
+}
+
+void InputBooksFromFile(BookList* list) {
+	ifstream ifs;
+	ifs.open("Books.txt", ios::in);
+	if (!ifs) {
+		cout << "Khong the mo file Books.txt!";
+		return;
+	}
+	int num;
+	ifs.seekg(-1, ios::end);
+	ifs >> num; // doc so luong sach
+	ifs.seekg(0, ios::beg);
+	for (int i = 0; i < num; i++) {
+		Book book; string temp;
+		getline(ifs, book.ISBN, ',');
+		getline(ifs, book.name, ',');
+		getline(ifs, book.author, ',');
+		getline(ifs, book.publisher, ',');
+		getline(ifs, temp, ',');
+		book.yearPublish = stoi(temp);
+		getline(ifs, book.type, ',');
+		getline(ifs, temp, ',');
+		book.price = stod(temp);
+		getline(ifs, temp, ',');
+		book.number = stoi(temp);
+		ThemSach(list, book);
+	}
+	ifs.close();
 }
