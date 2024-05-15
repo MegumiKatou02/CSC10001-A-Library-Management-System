@@ -63,7 +63,7 @@ void thong_ke() {}
 
 int main() {
 	intro();
-
+	InputReaderFromFile(readerList);
 	int option; // lua chon o main menu
 	int choice;	// lua chon ben trong <(")
 
