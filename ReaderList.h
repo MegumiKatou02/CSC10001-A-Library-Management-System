@@ -1,5 +1,6 @@
 #pragma once
 #include "ReaderNode.h"
+#include "ultilty.h"
 
 struct ReaderList {
 	ReaderNode* head;

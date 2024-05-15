@@ -8,6 +8,6 @@ bool chuThuong(const char &ch);
 
 bool chuInHoa(const char &ch);
 
-string InHoaDauCau(const string &s);
+string ChuanHoaTen(const string &s);
 
 vector<string> TachChuoi(const string &s);
