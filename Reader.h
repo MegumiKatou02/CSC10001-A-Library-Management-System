@@ -18,7 +18,7 @@ struct Reader {
 	string address;
 	Date startDay;
 	Date endDay;
-	LendCardList *lendCardList; // tap hop cac phieu muon ma doc gia da muon
+	LendCardList *lendCardList;
 	Reader();
 	~Reader();
 };

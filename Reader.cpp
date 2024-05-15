@@ -1,9 +1,9 @@
 #include "Reader.h"
 
 void ThongTinDocGia(Reader reader) {
+    cout << "     ID: " << reader.ID << endl;
     cout << "     Member's code: " << reader.code << endl;
     cout << "     Name: " << reader.name << endl;
-    cout << "     ID: " << reader.ID << endl;
     cout << "     gender: ";
     switch (reader.gender) {
     case 1: cout << "male"; break;
@@ -26,8 +26,6 @@ Reader::Reader()
 }
 
 Reader::~Reader() {
-    if(lendCardList != nullptr)
-        delete lendCardList;
 }
 
 int HashReaderCode(const string &s) {

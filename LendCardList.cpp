@@ -5,11 +5,11 @@ LendCardList::LendCardList() {
 }
 
 LendCardList::~LendCardList() {
-    while(head != nullptr) {
-        LendCardNode *current = head;
-        head = head->next;
-        delete current;
-    }
+   while(head != nullptr) {
+       LendCardNode *current = head;
+       head = head->next;
+       delete current;
+   }
 }
 
 void AddLendCard(LendCardList *list, LendCard lendCard) {

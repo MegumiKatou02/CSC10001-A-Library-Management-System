@@ -1,4 +1,4 @@
-    #include "BookList.h"
+#include "BookList.h"
 
 BookList::BookList() {
     head = tail = nullptr;
@@ -207,8 +207,10 @@ void TimKiemSachTheoTenSach(BookList *bookList) {
 
 BookNode *FindByISBNOrName(BookList *bookList, string undefine) {
     BookNode *current = bookList->head;
-    while(current != nullptr && (current->book.name != undefine ||
-                                current->book.ISBN != undefine)) {
+    while(current != nullptr) {
+        if(current->book.name == undefine || current->book.ISBN == undefine) {
+            return current;
+        }
         current = current->next;
     }
     return current;
