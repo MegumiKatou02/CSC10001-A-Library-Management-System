@@ -69,7 +69,7 @@ void NhapThemDocGia(ReaderList* list) {
         // cout << SizeReader(list) << " - size\n";  
         char ch;
         cout << "ban muon nhap them doc gia khac khong? (y/n): ";
-        cin >> ch;
+        cin >> ch;      
         while (toupper(ch) != 'Y' && toupper(ch) != 'N') {
             cout << "vui long nhap y hoac n: ";
             cin >> ch;
