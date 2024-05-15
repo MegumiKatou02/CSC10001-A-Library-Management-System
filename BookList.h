@@ -7,6 +7,7 @@ struct BookList {
     BookNode *head;
     BookNode *tail;
     BookList();
+    ~BookList();
 };
 
 void DanhSachCacSachTrongThuVien(BookList *bookList);

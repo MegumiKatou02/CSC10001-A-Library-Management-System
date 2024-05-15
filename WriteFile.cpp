@@ -1,5 +1,6 @@
 #include "WriteFile.h"
 #include <string>
+
 void WriteReaderToFile(ReaderList* list) {
 	ofstream ofs;
 	ofs.open("Readers.txt");
