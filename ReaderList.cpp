@@ -53,7 +53,7 @@ void NhapThemDocGia(ReaderList* list) {
         Reader reader;
         cout << "nhap thong tin nguoi doc moi: " << endl;
         // randomcode hoc cua anh ching sau nhe - anh Ching lam roi nhe
-        cout << "nhap ten: "; getline(cin >> ws, reader.name);
+        cout << "nhap ten: "; getline(cin >> ws, reader.name); reader.name = ChuanHoaTen(reader.name);
         cout << "Nhap ID: "; cin >> reader.ID;
         cout << "Nhap gioi tinh: \n1. Nam \n2. Nu \n3. Khac\n4. Khong xac dinh\n"; cin >> reader.gender;
         cout << "nhap email: "; cin >> reader.email;

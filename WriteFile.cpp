@@ -41,7 +41,7 @@ void InputReaderFromFile(ReaderList* list) {
 		Reader reader;
 		string temp;
 		getline(ifs, reader.code, ',');
-		getline(ifs, reader.name, ',');
+		getline(ifs, reader.name, ','); reader.name = ChuanHoaTen(reader.name);
 		getline(ifs, reader.ID, ','); 
 		getline(ifs, temp, ',');
 		reader.gender = stoi(temp);

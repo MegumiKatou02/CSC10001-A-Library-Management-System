@@ -4,7 +4,7 @@ bool chuThuong(const char &ch) {
     return ch >= 'a' && ch <= 'z';
 }
 
-bool chuHoa(const char &ch) {
+bool chuInHoa(const char &ch) {
     return ch >= 'A' && ch <= 'Z';
 }
 
@@ -19,7 +19,7 @@ vector<string> TachChuoi(const string &s) {
     return containString;
 }
 
-string InHoaDauCau(const string &s) {
+string ChuanHoaTen(const string &s) {
     vector<string> containString = TachChuoi(s);
     string sum = "";
     for(auto &x : containString) {
