@@ -1,8 +1,9 @@
 #include "WriteFile.h"
 #include <string>
+
 void WriteReaderToFile(ReaderList* list) {
 	ofstream ofs;
-	ofs.open("Readers.txt", ios::out || ios::app);
+	ofs.open("Readers.txt");
 	if (!ofs) {
 		cout << "khong the mo file Readers.txt!";
 		return;

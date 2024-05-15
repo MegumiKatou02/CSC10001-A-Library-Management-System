@@ -1,12 +1,11 @@
 #pragma once
 #include "ReaderNode.h"
 
-
-
 struct ReaderList {
 	ReaderNode* head;
 	ReaderNode* tail;
 	ReaderList();
+	~ReaderList();
 };
 
 void DanhSachDocGia(ReaderList* readerList);

@@ -4,6 +4,14 @@ BookList::BookList() {
     head = tail = nullptr;
 }
 
+BookList::~BookList() {
+    while(this->head != nullptr) {
+        BookNode *current = head;
+        head = head->next;
+        delete current;
+    }
+}
+
 void DanhSachCacSachTrongThuVien(BookList *bookList) {
     if(bookList->head == nullptr) {
         cout << "Thu vien chua co sach !\n";
