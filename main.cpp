@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BookList.h"
 #include "ReaderList.h"
+#include "WriteFile.h"
 // khoi tao danh sach doc gia va sach
 BookList *bookList = new BookList();
 ReaderList* readerList = new ReaderList();
@@ -62,7 +63,7 @@ void thong_ke() {}
 
 int main() {
 	intro();
-
+	InputReaderFromFile(readerList);
 	int option; // lua chon o main menu
 	int choice;	// lua chon ben trong <(")
 
@@ -126,10 +127,11 @@ int main() {
 			cout << "vui long nhap N hoac Y.";
 			cin >> next;
 		}
-		if (toupper(next) == 'N')  
-			return 0;
+		if (toupper(next) == 'N')
+			break;
 	} 
-
+	WriteReaderToFile(readerList);
+	WriteBooksToFile(bookList);
 	delete bookList;
 	delete readerList;
 

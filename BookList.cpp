@@ -1,7 +1,15 @@
-#include "BookList.h"
+    #include "BookList.h"
 
 BookList::BookList() {
     head = tail = nullptr;
+}
+
+BookList::~BookList() {
+    while(this->head != nullptr) {
+        BookNode *current = head;
+        head = head->next;
+        delete current;
+    }
 }
 
 void DanhSachCacSachTrongThuVien(BookList *bookList) {

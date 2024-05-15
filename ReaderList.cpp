@@ -1,7 +1,16 @@
 #include "ReaderList.h"
+#include <string>
 
 ReaderList::ReaderList() {
     head = tail = nullptr;
+}
+
+ReaderList::~ReaderList() {
+    while(this->head != nullptr) {
+        ReaderNode *current = head;
+        head = head->next;
+        delete current;
+    }
 }
 
 void DanhSachDocGia(ReaderList* readerList) {
