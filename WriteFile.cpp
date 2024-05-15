@@ -16,8 +16,8 @@ void WriteReaderToFile(ReaderList* list) {
 		ofs << reader->reader.gender << ",";
 		ofs << reader->reader.email << ",";
 		ofs << reader->reader.address << ",";
-		ofs << reader->reader.startDay.day << "/" << reader->reader.startDay.month << "/" << reader->reader.startDay.year << ",";
-		ofs << reader->reader.endDay.day << "/" << reader->reader.endDay.month << "/" << reader->reader.endDay.year << "\n";
+		ofs << reader->reader.startDay.day << "," << reader->reader.startDay.month << "," << reader->reader.startDay.year << ",";
+		ofs << reader->reader.endDay.day << "," << reader->reader.endDay.month << "," << reader->reader.endDay.year << ",";
 		reader = reader->next;
 		n++; // dem so doc gia them vao file
 	}
@@ -34,7 +34,7 @@ void InputReaderFromFile(ReaderList* list) {
 	}
 	int num;
 	ifs.seekg(-1, ios::end);
-	ifs >> num;
+	ifs >> num; // doc so luong doc gia
 	ifs.seekg(0, ios::beg);
 	for (int i = 0; i < num; i++) {
 		Reader reader;
