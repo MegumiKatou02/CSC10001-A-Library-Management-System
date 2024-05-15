@@ -204,3 +204,12 @@ void TimKiemSachTheoTenSach(BookList *bookList) {
     }
     ThongTinQuyenSach(bookNode->book);
 }
+
+BookNode *FindByISBNOrName(BookList *bookList, string undefine) {
+    BookNode *current = bookList->head;
+    while(current != nullptr && (current->book.name != undefine ||
+                                current->book.ISBN != undefine)) {
+        current = current->next;
+    }
+    return current;
+}
