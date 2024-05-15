@@ -1,14 +1,13 @@
-#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <iostream>
-#include <cstring>
 #include "Date.h"
-#include <iostream>
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include "LendCardList.h"
 
 using namespace std;
+
 struct Reader {
 	string code;
 	string name;
@@ -19,7 +18,9 @@ struct Reader {
 	string address;
 	Date startDay;
 	Date endDay;
+	LendCardList *lendCardList;
 	Reader();
+	~Reader();
 };
 
 void ThongTinDocGia(Reader reader);

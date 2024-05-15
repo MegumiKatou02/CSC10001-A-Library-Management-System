@@ -2,6 +2,8 @@
 #include "BookList.h"
 #include "ReaderList.h"
 #include "WriteFile.h"
+#include "LendAndReturnCard.h"
+
 // khoi tao danh sach doc gia va sach
 BookList *bookList = new BookList();
 ReaderList* readerList = new ReaderList();
@@ -108,8 +110,8 @@ int main() {
 			BookManagement(choice);
 			break;
 		}
-		case 3: break; // viet sau
-		case 4: break; // viet sau
+		case 3: LapPhieuMuonSach(readerList, bookList); break; 
+//		case 4: LapPhieuTraSach(readerList); break;
 		case 5: break; // viet sau
 		case 6: return 0;
 		default: break;
@@ -127,8 +129,8 @@ int main() {
 		if (toupper(next) == 'N')
 			break;
 	} 
-	WriteReaderToFile(readerList);
-	WriteBooksToFile(bookList);
+	// WriteReaderToFile(readerList);
+	// WriteBooksToFile(bookList);
 
 	delete bookList;
 	delete readerList;

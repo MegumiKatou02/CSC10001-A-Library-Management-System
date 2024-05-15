@@ -12,6 +12,7 @@ struct ReaderList {
 void DanhSachDocGia(ReaderList* readerList);
 ReaderNode* FindByName(ReaderList* list, string name);
 ReaderNode* FindByID(ReaderList* list, string ID);
+ReaderNode* FindByNameOrID(ReaderList *list, string undefineTypeData);
 Date UpdateEndDay(Date start);
 void NhapThemDocGia(ReaderList* list);
 void ThemDocGia(ReaderList *readerList, Reader reader);
