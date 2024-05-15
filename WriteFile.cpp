@@ -1,5 +1,5 @@
 #include "WriteFile.h"
-
+#include <string>
 void WriteReaderToFile(ReaderList* list) {
 	ofstream ofs;
 	ofs.open("Readers.txt", ios::out || ios::app);
@@ -8,6 +8,7 @@ void WriteReaderToFile(ReaderList* list) {
 		return;
 	}
 	ReaderNode* reader = list->head;
+	int n = 0;
 	while (reader != NULL) {
 		ofs << reader->reader.code << ",";
 		ofs << reader->reader.name << ",";
@@ -18,16 +19,64 @@ void WriteReaderToFile(ReaderList* list) {
 		ofs << reader->reader.startDay.day << "/" << reader->reader.startDay.month << "/" << reader->reader.startDay.year << ",";
 		ofs << reader->reader.endDay.day << "/" << reader->reader.endDay.month << "/" << reader->reader.endDay.year << "\n";
 		reader = reader->next;
+		n++; // dem so doc gia them vao file
 	}
+	ofs << n; // ghi vao cuoi file
 	ofs.close();
 }
 
+void InputReaderFromFile(ReaderList* list) {
+	ifstream ifs;
+	ifs.open("Readers.txt", ios::in);
+	if (!ifs) {
+		cout << "khong the mo file Readers.txt!";
+		return;
+	}
+	int num;
+	ifs.seekg(-1, ios::end);
+	ifs >> num;
+	ifs.seekg(0, ios::beg);
+	for (int i = 0; i < num; i++) {
+		Reader reader;
+		string temp;
+		getline(ifs, reader.code, ',');
+		getline(ifs, reader.name, ',');
+		getline(ifs, reader.ID, ','); 
+		getline(ifs, temp, ',');
+		reader.gender = stoi(temp);
+		
+		getline(ifs, reader.email, ',');
+
+		getline(ifs, reader.address, ',');
+
+		getline(ifs, temp, ',');
+		reader.startDay.day = stoi(temp);
+
+		getline(ifs, temp, ',');
+		reader.startDay.month = stoi(temp);
+
+		getline(ifs, temp, ',');
+		reader.startDay.year = stoi(temp);
+
+		getline(ifs, temp, ',');
+		reader.endDay.day = stoi(temp);
+
+		getline(ifs, temp, ',');
+		reader.endDay.month = stoi(temp);
+
+		getline(ifs, temp, ',');
+
+		reader.endDay.year = stoi(temp);
+		ThemDocGia(list, reader);
+	}
+	ifs.close();
+}
 
 void WriteBooksToFile(BookList* list) {
 	ofstream ofs;
-	ofs.open("BookShelf.txt", ios::out || ios::app);
+	ofs.open("Books.txt");
 	if (!ofs) {
-		cout << "khong the mo file books.txt!";
+		cout << "khong the mo file Books.txt!";
 		return;
 	}
 	BookNode* curBook = list->head;
