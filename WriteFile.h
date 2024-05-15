@@ -7,4 +7,5 @@
 void WriteReaderToFile(ReaderList* list);
 void WriteBooksToFile(BookList* list);
 
+void InputBooksFromFile(BookList* list);
 void InputReaderFromFile(ReaderList* list);
