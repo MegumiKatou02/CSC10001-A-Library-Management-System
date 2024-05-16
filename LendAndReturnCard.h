@@ -1,7 +1,12 @@
 #pragma once
 #include "ReaderList.h"
 #include "BookList.h"
+#include "Date.h"
 
-void LapPhieuTraSach(ReaderList *readerList);
+using namespace std;
+
+void LapPhieuTraSach(ReaderList *readerList, BookList *bookList);
 
 void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList);
+
+void TraSachVeThuVien(Reader &reader, BookList *bookList);

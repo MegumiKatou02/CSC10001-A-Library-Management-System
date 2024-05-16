@@ -7,9 +7,16 @@ ReaderNode::ReaderNode(Reader reader) {
 
 void InputAddLendCard(ReaderNode *readerNode, Book book) {
     LendCard lendCard;
-    cout << "Nhap ngay muon: "; cin >> lendCard.borrowDate.day;
-    cout << "Nhap thang muon: "; cin >> lendCard.borrowDate.month;
-    cout << "Nhap nam muon: "; cin >> lendCard.borrowDate.year;
+    while(true) {
+        cout << "Nhap ngay tra du kien: "; cin >> lendCard.returnDate.day;
+        cout << "Nhap thang tra du kien: "; cin >> lendCard.returnDate.month;
+        cout << "Nhap nam tra du kien: "; cin >> lendCard.returnDate.year;
+        if(lendCard.returnDate < RealDate()) {
+            cout << "Khong the nhap ngay tra du kien truoc ngay muon sach !\n";
+            continue;
+        }
+        break;
+    }
     lendCard.borrowBook = book;
     readerNode->reader.lendCards.push_back(lendCard);
 }

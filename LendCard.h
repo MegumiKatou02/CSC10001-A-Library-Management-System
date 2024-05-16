@@ -7,6 +7,7 @@ struct LendCard {
 	Date borrowDate;
 	Date returnDate; // ngay tra du kien
 	Book borrowBook;
+	int number;
 	LendCard();
 	~LendCard();
 };
