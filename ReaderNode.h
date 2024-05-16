@@ -6,3 +6,5 @@ struct ReaderNode {
 	ReaderNode* next;
 	ReaderNode(Reader reader);
 };
+
+void InputAddLendCard(ReaderNode *readerNode, Book book);

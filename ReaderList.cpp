@@ -258,7 +258,7 @@ ReaderNode* FindByNameOrID(ReaderList *list, string undefineTypeData) {
     ReaderNode* curReader = list->head;
     while (curReader != nullptr) {
         if(curReader->reader.ID == undefineTypeData || curReader->reader.name == undefineTypeData) {
-            cout << curReader->reader.ID   << " - " <<  curReader->reader.name << "\n";
+            //cout << curReader->reader.ID   << " - " <<  curReader->reader.name << "\n";
             return curReader;
         }      
         curReader = curReader->next;
