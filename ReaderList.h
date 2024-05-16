@@ -9,6 +9,7 @@ struct ReaderList {
 	~ReaderList();
 };
 
+void FindAllReadersWithName(ReaderList* list);
 void DanhSachDocGia(ReaderList* readerList);
 ReaderNode* FindByName(ReaderList* list, string name);
 ReaderNode* FindByID(ReaderList* list, string ID);

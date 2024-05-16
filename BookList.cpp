@@ -12,6 +12,17 @@ BookList::~BookList() {
     }
 }
 
+int SizeBook(BookList* list) {
+    int count = 0;
+    BookNode* current = list->head;
+    while (current != nullptr)
+    {
+        count++;
+        current = current->next;
+    }
+    return count;
+}
+
 void DanhSachCacSachTrongThuVien(BookList *bookList) {
     if(bookList->head == nullptr) {
         cout << "Thu vien chua co sach !\n";
@@ -203,4 +214,23 @@ void TimKiemSachTheoTenSach(BookList *bookList) {
         return;
     }
     ThongTinQuyenSach(bookNode->book);
+}
+
+void FindAllBooksByName(BookList* list) {
+    cout << "Nhap ten sach cua cuon sach can tim: ";
+    string bookName; getline(cin, bookName);
+    BookNode* curBook = list->head;
+    bool found = false;
+    for (curBook; curBook != NULL; curBook = curBook->next) {
+        if (curBook->book.ISBN == bookName) {
+            if (!found) {
+                cout << "Cac quyen sach co ten tuong ung la: ";
+            }
+            ThongTinQuyenSach(curBook->book);
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "Khong co cuon sach nao trong thu vien co ten tuong ung!";
+    }
 }

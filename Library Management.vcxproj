@@ -130,10 +130,12 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookList.cpp" />
     <ClCompile Include="BookNode.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Reader.cpp" />
     <ClCompile Include="ReaderList.cpp" />
     <ClCompile Include="ReaderNode.cpp" />
+    <ClCompile Include="Statistic.cpp" />
     <ClCompile Include="ultilty.cpp" />
     <ClCompile Include="WriteFile.cpp" />
   </ItemGroup>
@@ -145,6 +147,8 @@
     <ClInclude Include="Reader.h" />
     <ClInclude Include="ReaderList.h" />
     <ClInclude Include="ReaderNode.h" />
+    <ClInclude Include="ReturnCard.h" />
+    <ClInclude Include="Statistic.h" />
     <ClInclude Include="ultilty.h" />
     <ClInclude Include="WriteFile.h" />
   </ItemGroup>

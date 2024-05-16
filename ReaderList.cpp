@@ -188,6 +188,26 @@ void ReaderInfoChanging(ReaderList* list) {
     }
 }
 
+void FindAllReadersWithName(ReaderList* list) {
+    cout << "Nhap ten ban muon tim kiem: ";
+    string name; getline(cin, name);
+
+    ReaderNode* curReader = list->head;
+    bool found = false;
+    for (curReader; curReader != NULL; curReader = curReader->next) {
+        if (curReader->reader.name == name) { 
+            if (!found) {
+                cout << "Thong tin cac doc gia co ten trung khop: " << endl;
+            }
+            ThongTinDocGia(curReader->reader); cout << endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "Khong co doc gia nao co ten trung khop voi ten da nhap!";
+    }
+}
+
 void UserFindReaderByName(ReaderList* list) {
     cout << "Nhap ten doc gia ban muon tim kiem: ";
     string fName; getline(cin >> ws, fName);
