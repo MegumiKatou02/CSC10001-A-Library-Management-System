@@ -205,10 +205,10 @@ void TimKiemSachTheoTenSach(BookList *bookList) {
     ThongTinQuyenSach(bookNode->book);
 }
 
-BookNode *FindByISBNOrName(BookList *bookList, string undefine) {
+BookNode *FindByISBNOrName(BookList *bookList, string undefined) {
     BookNode *current = bookList->head;
     while(current != nullptr) {
-        if(current->book.name == undefine || current->book.ISBN == undefine) {
+        if(current->book.name == undefined || current->book.ISBN == undefined) {
             return current;
         }
         current = current->next;
