@@ -1,6 +1,6 @@
 #include "LendAndReturnCard.h"
 
-void LapPhieuTraSach(ReaderList *readerList) {
+void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
     cout << "Nhap ma doc gia hoac ten doc gia muon tra phieu:\n";
     string undefined; getline(cin >> ws, undefined);
     ReaderNode *readerNode = FindByNameOrID(readerList, undefined);
@@ -9,13 +9,48 @@ void LapPhieuTraSach(ReaderList *readerList) {
         return;
     }
     Reader reader = readerNode->reader;
-    cout << reader.name << "\n";
-    cout << reader.ID << "\n";
-    for(const LendCard &lendCard : reader.lendCards) {
-        ThongTinQuyenSach(lendCard.borrowBook);
-        cout << "Ngay tra du kien: " << lendCard.borrowDate.day << "/" << lendCard.borrowDate.month << "/" << lendCard.borrowDate.year << "\n";
+    if(reader.lendCards.empty()) {
+        cout << "Doc gia chua muon sach nao trong thu vien\n";
+        return;
+    }
+    ThongTinDocGia(reader);
+    cout << "\nNhung sach da muon:\n";
+    srand(time(nullptr));
+    for(LendCard &lendCard : reader.lendCards) {
+        cout << "ISBN: " << lendCard.borrowBook.ISBN << "\n";
+        cout << "Ten sach: " << lendCard.borrowBook.name << "\n";
+        cout << "So quyen sach da muon: " << lendCard.borrowBook.number << " quyen\n";
+        cout << "Ngay muon sach: " << RealDate() << "\n";
+        lendCard.borrowDate = RealDate();
+        cout << "Ngay tra du kien: " << lendCard.returnDate << "\n";
+        int seed = rand() % 20 + 1;
+        Date realReturnDate = addDays(lendCard.borrowDate, seed);
+        Date standardDate = addDays(lendCard.borrowDate, 7); // ngay gioi han tra sach
+        cout << "Ngay tra thuc te: " << realReturnDate << "\n";
+        int penalty = 0;
+        if(realReturnDate > standardDate) {
+            penalty = DaysCalculate(standardDate, realReturnDate) * 5000;
+        }
+        //
+        bool existed = realReturnDate > addDays(lendCard.borrowDate, 18);
+        //
+        Book book = lendCard.borrowBook;
+        double moneyHaveToPay = book.price * book.number + penalty;
+        if(existed) {
+            penalty = 0;
+            moneyHaveToPay = 2 * book.price * book.number;
+        }
+        cout << "So tien phai tra: " << moneyHaveToPay << "vnd ";
+        if(existed) {
+            cout << "(mat sach)\n";
+        }
+        else if(penalty != 0) {
+            cout << "(tien phat: " << penalty << ")\n";
+        }
+        else cout << "\n";
         cout << "\n";
     }
+    TraSachVeThuVien(readerNode->reader, bookList);
 }
 
 void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
@@ -25,6 +60,10 @@ void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
     ReaderNode *readerNode = FindByNameOrID(readerList, undefined);
     if(readerNode == nullptr) {
         cout << "Ma doc gia hoac ten doc gia khong hop le !\n";
+        return;
+    }
+    if(readerNode->reader.endDay < RealDate()) {
+        cout << "The cua doc gia da het han, khong the muon duoc sach\n";
         return;
     }
     cout << "Nhap so loai sach muon muon: ";
@@ -51,8 +90,23 @@ void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
             bookNumber = bookNode->book.number;
             bookNode->book.number = 0;
         }
-        else bookNode->book.number = bookNode->book.number - bookNumber;
+        else { 
+           bookNode->book.number = bookNode->book.number - bookNumber;
+        }
+        int sizeLendCard = readerNode->reader.lendCards.size();
+        readerNode->reader.lendCards[sizeLendCard - 1].number = bookNumber;
         cout << "Muon thanh cong "<< bookNumber << " quyen " << "!\n";
         cout << "\n";
     }
+}
+void TraSachVeThuVien(Reader &reader, BookList *bookList) {
+    for(LendCard &lendCard : reader.lendCards) {
+        int number = lendCard.borrowBook.number;
+        string ISBN = lendCard.borrowBook.ISBN;
+        BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
+        bookNode->book.number += number;
+    }
+    reader.lendCards.clear();
+    reader.lendCards.shrink_to_fit();
+    reader.lendCards.resize(0);
 }
