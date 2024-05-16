@@ -253,15 +253,3 @@ void DeleteInformationReader(ReaderList *&list) {
     delete current;
     cout << "Xoa thanh cong thong tin doc gia <(\")\n";
 }
-
-ReaderNode* FindByNameOrID(ReaderList *list, string undefineTypeData) {
-    ReaderNode* curReader = list->head;
-    while (curReader != nullptr) {
-        if(curReader->reader.ID == undefineTypeData || curReader->reader.name == undefineTypeData) {
-            //cout << curReader->reader.ID   << " - " <<  curReader->reader.name << "\n";
-            return curReader;
-        }      
-        curReader = curReader->next;
-    }
-    return curReader;
-}
