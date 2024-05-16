@@ -39,6 +39,7 @@ void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
         if(existed) {
             penalty = 0;
             moneyHaveToPay = 2 * book.price * book.number;
+            lateReturnerStatisticizeNumber.insert(reader.name);
         }
         cout << "So tien phai tra: " << moneyHaveToPay << "vnd ";
         if(existed) {

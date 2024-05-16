@@ -3,15 +3,19 @@
 #include "BookList.h"
 #include <vector>
 #include <map>
+#include <set>
 using namespace std;
 
 // cac ham thong ke sach
-void BookStatisticize(BookList* list);
-void BookTypeStatisticize(BookList* list);
+void BookStatisticize(BookList* list);                      // a
+void BookTypeStatisticize(BookList* list);                  // b
 
 // cac ham thong ke doc gia
-void ReaderStatisticize(ReaderList* list);
-void ReaderStactisticizeByGender(ReaderList* list);
+void ReaderStatisticize(ReaderList* list);                  //c
+void ReaderStatisticizeByGender(ReaderList* list);          //d
 
-// thong ke sach muon, tra, tre han
-void BorrowedBookStatisticize(ReaderList* readerList);
+// thong ke sach muon, tre han
+void BorrowedBookStatisticize(ReaderList* readerList);      // e
+void LateReturnerStatisticize(ReaderList *readerList);      // f
+
+static set<string> lateReturnerStatisticizeNumber;

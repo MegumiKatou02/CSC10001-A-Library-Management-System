@@ -2,6 +2,7 @@
 #include "ReaderList.h"
 #include "BookList.h"
 #include "Date.h"
+#include "Statistic.h"
 
 using namespace std;
 

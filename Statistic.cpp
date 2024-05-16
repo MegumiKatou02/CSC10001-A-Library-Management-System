@@ -19,10 +19,11 @@ void BookTypeStatisticize(BookList* list) {
 	BookNode* curBook = list->head;
 	while (curBook != NULL) {
 		mymap[curBook->book.type]++;
+		curBook = curBook->next;
 	}
 	cout << "Cac the loai sach tuong ung: ";
 	for (const pair<string, int> m : mymap) {
-		cout << m.first << " " << m.second << " ";
+		cout << m.first << " " << m.second << "\n";
 	}
 }
 
@@ -53,4 +54,24 @@ void ReaderStatisticizeByGender(ReaderList* list) {
 	cout << nu << " doc gia co gioi tinh nu." << endl;
 	cout << khongxacdinh << " doc gia khong xac dinh duoc gioi tinh." << endl;
 	cout << khac << " doc gia khac." << endl;
+}
+
+void BorrowedBookStatisticize(ReaderList* readerList) {
+	ReaderNode *readerNode = readerList->head;
+	int number = 0;
+	while(readerNode != nullptr) {
+		Reader reader = readerNode->reader;
+		for(const LendCard &lendCard : reader.lendCards) {
+			number += lendCard.number;
+		}
+		readerNode = readerNode->next;
+	}
+	cout << "So sach dang duoc muon: " << number << "\n";
+}
+
+void LateReturnerStatisticize(ReaderList *readerList) {
+	cout << "Danh sach doc gia bi tre han:\n";
+	for(const string &lateRetuner : lateReturnerStatisticizeNumber) {
+		cout << lateRetuner << "\n";
+	}
 }
