@@ -2,5 +2,5 @@
 
 <h2> Information </h2>
 <h3> Coder</h3>
-- Lê Đình Chinh
+- Lê Đình Chinh <br>
 - Nguyễn Đặng Minh Duy
