@@ -58,7 +58,7 @@ void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
     string ID; cin >> ID;
     ReaderNode *readerNode = FindByID(readerList, ID);
     if(readerNode == nullptr) {
-        cout << "Ma doc gia hoac ten doc gia khong hop le !\n";
+        cout << "Ma doc gia khong hop le !\n";
         return;
     }
     if(readerNode->reader.endDay < RealDate()) {
