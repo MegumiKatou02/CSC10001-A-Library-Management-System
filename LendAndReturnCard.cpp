@@ -1,11 +1,11 @@
 #include "LendAndReturnCard.h"
 
 void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
-    cout << "Nhap ma doc gia hoac ten doc gia muon tra phieu:\n";
-    string undefined; getline(cin >> ws, undefined);
-    ReaderNode *readerNode = FindByNameOrID(readerList, undefined);
+    cout << "Nhap ma doc gia muon trar phieu:\n";
+    string ID; cin >> ID;
+    ReaderNode *readerNode = FindByID(readerList, ID);
     if(readerNode == nullptr) {
-        cout << "Ma doc gia hoac ten doc gia khong hop le !\n";
+        cout << "Ma doc gia khong hop le !\n";
         return;
     }
     Reader reader = readerNode->reader;
@@ -54,10 +54,9 @@ void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
 }
 
 void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
-    cout << "Nhap ma doc gia hoac ten doc gia muon lap phieu:\n";
-    string undefined;
-    getline(cin >> ws, undefined);
-    ReaderNode *readerNode = FindByNameOrID(readerList, undefined);
+    cout << "Nhap ma doc gia muon lap phieu:\n";
+    string ID; cin >> ID;
+    ReaderNode *readerNode = FindByID(readerList, ID);
     if(readerNode == nullptr) {
         cout << "Ma doc gia hoac ten doc gia khong hop le !\n";
         return;
@@ -70,12 +69,11 @@ void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
     unsigned int number; cin >> number;
     for(int i = 1; i <= number; i++) {
         cout << "Quyen sach thu " << i << ":\n";
-        cout << "Nhap ISBN hoac ten sach muon muon: ";
-        string bookUndefine;
-        getline(cin >> ws, bookUndefine);
-        BookNode *bookNode = FindByISBNOrName(bookList, bookUndefine);
+        cout << "Nhap ISBN muon muon: ";
+        string ISBN; cin >> ISBN;
+        BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
         if(bookNode == nullptr) {
-            cout << "ISBN hoac ten sach khong hop le !\n";
+            cout << "ISBN khong hop le !\n";
             continue;
         }
         InputAddLendCard(readerNode, bookNode->book);
