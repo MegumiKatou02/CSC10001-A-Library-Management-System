@@ -39,7 +39,7 @@ void ReaderManagement(int option) {
 	case 3: ReaderInfoChanging(readerList); break;
 	case 4: DeleteInformationReader(readerList); break;
 	case 5: UserFindReaderByID(readerList); break;
-	case 6: UserFindReaderByName(readerList); break;
+	case 6: FindAllReadersWithName(readerList); break;
 	}
 }
 
