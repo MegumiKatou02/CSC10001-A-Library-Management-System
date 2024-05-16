@@ -4,7 +4,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
-#include "LendCardList.h"
+#include "LendCard.h"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ struct Reader {
 	string address;
 	Date startDay;
 	Date endDay;
-	LendCardList *lendCardList;
+	vector<LendCard> lendCards;
 	Reader();
 	~Reader();
 };

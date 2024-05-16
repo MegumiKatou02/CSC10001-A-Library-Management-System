@@ -22,7 +22,6 @@ void ThongTinDocGia(Reader reader) {
 Reader::Reader()
 {
     this->code = "";
-    this->lendCardList = new LendCardList();
 }
 
 Reader::~Reader() {
