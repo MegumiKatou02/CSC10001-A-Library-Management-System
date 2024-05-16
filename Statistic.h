@@ -18,4 +18,6 @@ void ReaderStatisticizeByGender(ReaderList* list);          //d
 void BorrowedBookStatisticize(ReaderList* readerList);      // e
 void LateReturnerStatisticize(ReaderList *readerList);      // f
 
+void InserLateReturner(string nameReturner);
+
 static set<string> lateReturnerStatisticizeNumber;

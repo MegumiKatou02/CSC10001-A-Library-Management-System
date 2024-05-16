@@ -21,7 +21,7 @@ void BookTypeStatisticize(BookList* list) {
 		mymap[curBook->book.type]++;
 		curBook = curBook->next;
 	}
-	cout << "Cac the loai sach tuong ung: ";
+	cout << "Cac the loai sach tuong ung: \n";
 	for (const pair<string, int> m : mymap) {
 		cout << m.first << " " << m.second << "\n";
 	}
@@ -34,7 +34,7 @@ void ReaderStatisticize(ReaderList* list) {
 		num++;
 		curReader = curReader->next;
 	}
-	cout << "Tong so luong doc gia la: " << num << " doc gia." << endl;
+	cout << "Tong so luong doc gia la: " << num << endl;
 }
 
 void ReaderStatisticizeByGender(ReaderList* list) {
@@ -75,3 +75,7 @@ void LateReturnerStatisticize(ReaderList *readerList) {
 		cout << lateRetuner << "\n";
 	}
 }
+
+void InserLateReturner(string nameReturner) {
+	lateReturnerStatisticizeNumber.insert(nameReturner);
+};

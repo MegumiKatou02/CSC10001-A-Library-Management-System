@@ -26,6 +26,7 @@ void DanhSachDocGia(ReaderList* readerList) {
         curReader = curReader->next;
         number++;
     }
+    cout << "\n";
 }
 
 

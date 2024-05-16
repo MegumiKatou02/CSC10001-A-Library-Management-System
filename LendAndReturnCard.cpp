@@ -1,7 +1,7 @@
 #include "LendAndReturnCard.h"
 
 void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
-    cout << "Nhap ma doc gia muon trar phieu:\n";
+    cout << "Nhap ma doc gia muon tra phieu:\n";
     string ID; cin >> ID;
     ReaderNode *readerNode = FindByID(readerList, ID);
     if(readerNode == nullptr) {
@@ -30,6 +30,7 @@ void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
         int penalty = 0;
         if(realReturnDate > standardDate) {
             penalty = DaysCalculate(standardDate, realReturnDate) * 5000;
+            InserLateReturner(reader.ID + " - " + reader.name);
         }
         //
         bool existed = realReturnDate > addDays(lendCard.borrowDate, 18);
@@ -39,7 +40,6 @@ void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
         if(existed) {
             penalty = 0;
             moneyHaveToPay = 2 * book.price * book.number;
-            lateReturnerStatisticizeNumber.insert(reader.name);
         }
         cout << "So tien phai tra: " << moneyHaveToPay << "vnd ";
         if(existed) {

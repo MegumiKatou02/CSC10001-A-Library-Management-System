@@ -59,10 +59,10 @@ void BookManagement(int option) {
 }
 
 int StatisticMenu() {
-	cout << "1.     Thong ke sach\n";
-	cout << "2.     Thong ke doc gia\n";
-	cout << "3.     Thong ke phieu muon/tra sach\n";
-	cout << "4.     Thoat\n";
+	cout << "     1.Thong ke sach\n";
+	cout << "     2.Thong ke doc gia\n";
+	cout << "     3.Thong ke phieu muon/tra sach\n";
+	cout << "     4.Thoat\n";
 	// xu ly lenh cua nguoi dung 
 	int option;
 	cin >> option;
@@ -158,7 +158,7 @@ int main() {
 			cout << "Cam on ban da su dung chuong trinh (khong ai ca)\n";
 			return 0;
 		}
-
+		}
 		// nguoi dung co the chon tiep tuc cac thao tac khac hoac thoat chuong trinh
 		char next;
 		cout << "ban co muon thuc hien thao tac khac khong? (y/n):";
@@ -167,9 +167,7 @@ int main() {
 			cout << "vui long nhap N hoac Y.";
 			cin >> next;
 		}
-		if (toupper(next) == 'N')
-			break;
-		}
+		if (toupper(next) == 'N') break;
 	} 
 	// WriteReaderToFile(readerList);
 	// WriteBooksToFile(bookList);
