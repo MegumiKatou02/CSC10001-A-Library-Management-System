@@ -11,3 +11,5 @@ bool chuInHoa(const char &ch);
 string ChuanHoaTen(const string &s);
 
 vector<string> TachChuoi(const string &s);
+
+string InThuongChuoi(const string s);
