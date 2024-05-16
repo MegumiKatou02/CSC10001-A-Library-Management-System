@@ -21,6 +21,7 @@ void AddLendCard(LendCardList *list, LendCard lendCard) {
         list->tail->next = node;
     }
     list->tail = node;
+
 }
 
 void InputAddLendCard(LendCardList *list) {

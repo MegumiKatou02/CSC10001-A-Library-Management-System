@@ -93,7 +93,11 @@ void ThemDocGia(ReaderList *readerList, Reader reader) {
 
 ReaderNode* FindByName(ReaderList* list, string name) {
     ReaderNode* curReader = list->head;
-    while (curReader != NULL && curReader->reader.name != name) {
+    name = InThuongChuoi(name);
+    while (curReader != NULL) {
+        if(InThuongChuoi(curReader->reader.name) == name) {
+            return curReader;
+        }
         curReader = curReader->next;
     }
     return curReader;
@@ -127,7 +131,7 @@ void ReaderInfoChanging(ReaderList* list) {
     cout << "Nhap ten doc gia can chinh sua thong tin: ";
     string name; getline(cin >> ws, name);
     ReaderNode* fReader = FindByName(list, name);
-    if (fReader == NULL || fReader->reader.name != name) {
+    if (fReader == NULL) {
         cout << "Ten doc gia nhap vao khong ton tai hoac chua duoc dang ky!";
         return;
     }

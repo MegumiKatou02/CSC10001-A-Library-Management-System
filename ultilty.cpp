@@ -31,3 +31,11 @@ string ChuanHoaTen(const string &s) {
     }
     return sum.substr(0, sum.length() - 1);
 }
+
+string InThuongChuoi(const string s) {
+    string sum = "";
+    for(const char &ch : s) {
+        sum = sum + (char)tolower(ch);
+    }
+    return sum;
+}
