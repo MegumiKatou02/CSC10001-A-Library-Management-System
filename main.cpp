@@ -17,6 +17,7 @@ void intro() {
 int MainMenu() {
 
 	// hien thong tin lua chon len man hinh
+	cout << "   PHAN MEM QUAN LI THU VIEN (Ching va Duy)\n";
 	cout << "     1. Quan ly doc gia" << endl;
 	cout << "     2. Quan ly sach" << endl;
 	cout << "     3. Lap phieu muon sach" << endl;
@@ -103,7 +104,7 @@ int main() {
 	int choice;	// lua chon ben trong <(")
 
 	while (option = MainMenu()) {
-		// system("cls");
+		system("cls");
 		switch (option) {
 		case 1: {
 			cout << "\tQUAN LY DOC GIA\n";
@@ -121,7 +122,10 @@ int main() {
 			{
 				cout << "Vui long chon lua chon phu hop";
 			}
-			if(choice == 7) continue;
+			system("cls");
+			if(choice == 7){
+				continue;
+			} 
 			ReaderManagement(choice);
 			break;
 		}
@@ -142,7 +146,10 @@ int main() {
 			{
 				cout << "Vui long chon lua chon phu hop\n";
 			}
-			if(choice == 7) continue;
+			system("cls");
+			if(choice == 7) {
+				continue;
+			}
 			BookManagement(choice);
 			break;
 		}
@@ -150,7 +157,10 @@ int main() {
 		case 4: LapPhieuTraSach(readerList, bookList); break;
 		case 5: {
 			int choice = StatisticMenu();
-			if(choice == 4) continue;
+			system("cls");
+			if(choice == 4) {
+				continue;
+			}
 			StatisticManagement(choice);
 			break;
 		} // viet sau // viet xong roi (chac the)
@@ -168,6 +178,7 @@ int main() {
 			cin >> next;
 		}
 		if (toupper(next) == 'N') break;
+		else system("cls");
 	} 
 	// WriteReaderToFile(readerList);
 	// WriteBooksToFile(bookList);

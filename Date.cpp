@@ -116,3 +116,16 @@ bool Date::operator==(const Date &date) {
 bool Date::operator<(const Date &date) {
     return !(*this > date || *this == date);
 }
+
+Date &Date::operator++(int) {
+    if(day == DaysInMonth(month, year)) {
+        day = 1;
+        if(month == 12) {
+            month = 1;
+            year++;
+        }
+        else month++;
+    }
+    else day++;
+    return *this;
+}

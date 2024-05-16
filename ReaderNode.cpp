@@ -9,6 +9,11 @@ void InputAddLendCard(ReaderNode *readerNode, Book book) {
     LendCard lendCard;
     while(true) {
         cout << "Nhap ngay tra du kien: "; cin >> lendCard.returnDate.day;
+        if(lendCard.returnDate.day == -1) {
+            Date date = RealDate(); date++;
+            lendCard.returnDate = date;
+            break;
+        }
         cout << "Nhap thang tra du kien: "; cin >> lendCard.returnDate.month;
         cout << "Nhap nam tra du kien: "; cin >> lendCard.returnDate.year;
         if(lendCard.returnDate < RealDate()) {

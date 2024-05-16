@@ -15,6 +15,7 @@ struct Date {
     Date(const Date &date);
     Date(int day = 2, int month = 2, int year = 1996);
     Date operator=(const Date &date);
+    Date &operator++(int);
 };
 
 bool isLeapYear(const int &year);
