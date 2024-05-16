@@ -3,6 +3,7 @@
 #include "ReaderList.h"
 #include "WriteFile.h"
 #include "LendAndReturnCard.h"
+#include "Statistic.h"
 
 // khoi tao danh sach doc gia va sach
 BookList *bookList = new BookList();
@@ -54,6 +55,41 @@ void BookManagement(int option) {
 	case 4: ChinhSuaThongTinSach(bookList); break;
 	case 5: TimKiemSachTheoISBN(bookList); break;
 	case 6: TimKiemSachTheoTenSach(bookList); break;
+	}
+}
+
+int StatisticMenu() {
+	cout << "1.     Thong ke sach\n";
+	cout << "2.     Thong ke doc gia\n";
+	cout << "3.     Thong ke phieu muon/tra sach\n";
+	cout << "4.     Thoat\n";
+	// xu ly lenh cua nguoi dung 
+	int option;
+	cin >> option;
+	while (option < 1 || option > 4) {
+		cout << "Lenh khong hop le, vui long nhap lai: ";
+		cin >> option;
+	}
+	return option; 
+}
+
+void StatisticManagement(int option) {
+	switch(option) {
+	case 1: {
+		BookStatisticize(bookList); cout << "\n";
+		BookTypeStatisticize(bookList);
+		break;
+	}	
+	case 2: {
+		ReaderStatisticize(readerList); cout << "\n";
+		ReaderStatisticizeByGender(readerList);
+		break;
+	}
+	case 3: {
+		BorrowedBookStatisticize(readerList); cout << "\n";
+		LateReturnerStatisticize(readerList);
+		break;
+	}
 	}
 }
 
@@ -112,10 +148,15 @@ int main() {
 		}
 		case 3: LapPhieuMuonSach(readerList, bookList); break; 
 		case 4: LapPhieuTraSach(readerList, bookList); break;
-		case 5: break; // viet sau
-		case 6: return 0;
-		default: break;
-
+		case 5: {
+			int choice = StatisticMenu();
+			if(choice == 4) continue;
+			StatisticManagement(choice);
+			break;
+		} // viet sau // viet xong roi (chac the)
+		case 6: {
+			cout << "Cam on ban da su dung chuong trinh (khong ai ca)\n";
+			return 0;
 		}
 
 		// nguoi dung co the chon tiep tuc cac thao tac khac hoac thoat chuong trinh
@@ -128,6 +169,7 @@ int main() {
 		}
 		if (toupper(next) == 'N')
 			break;
+		}
 	} 
 	// WriteReaderToFile(readerList);
 	// WriteBooksToFile(bookList);
