@@ -4,7 +4,7 @@
 
 ### Coder
 - **Lê Đình Chinh**
-- **Nguyễn Đặng Minh Duy**
+- **Nguyễn Đặng Minh Duy (nup duoi gam giuong)**
 
 ## Instructions for Installing the Program
 
