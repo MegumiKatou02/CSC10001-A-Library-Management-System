@@ -14,3 +14,5 @@
 2. **Configuration for DevC++**
    - Verify the directory that your `Project.dev` file is using.
    - Edit the data files (`readers.txt`, `books.txt`) as needed to suit your requirements.
+3 **Version of C++**
+    - From c++11 version to latest version.
