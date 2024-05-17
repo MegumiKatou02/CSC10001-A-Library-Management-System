@@ -205,32 +205,21 @@ void TimKiemSachTheoISBN(BookList *bookList) {
     ThongTinQuyenSach(bookNode->book);
 }
 
-void TimKiemSachTheoTenSach(BookList *bookList) {
-    cout << "Nhap ten sach de tim kiem: ";
-    string name; getline(cin >> ws, name);
-    BookNode *bookNode = BookDuaTrenTenSach(bookList, name);
-    if(bookNode == nullptr) {
-        cout << "Ten sach khong ton tai hoac khong dung dinh dang !\n";
-        return;
-    }
-    ThongTinQuyenSach(bookNode->book);
-}
-
 void FindAllBooksByName(BookList* list) {
     cout << "Nhap ten sach cua cuon sach can tim: ";
-    string bookName; getline(cin, bookName);
+    string bookName; getline(cin >> ws, bookName);
     BookNode* curBook = list->head;
     bool found = false;
     for (curBook; curBook != NULL; curBook = curBook->next) {
-        if (curBook->book.ISBN == bookName) {
+        if (curBook->book.name == bookName) {
             if (!found) {
-                cout << "Cac quyen sach co ten tuong ung la: ";
+                cout << "Cac quyen sach co ten tuong ung la: \n";
             }
-            ThongTinQuyenSach(curBook->book);
+            ThongTinQuyenSach(curBook->book); cout << "\n";
             found = true;
         }
     }
     if (!found) {
-        cout << "Khong co cuon sach nao trong thu vien co ten tuong ung!";
+        cout << "Khong co cuon sach nao trong thu vien co ten tuong ung!\n";
     }
 }

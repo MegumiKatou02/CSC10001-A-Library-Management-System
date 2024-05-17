@@ -129,13 +129,14 @@ int ReaderInfoChangeOption() {
 }
 
 void ReaderInfoChanging(ReaderList* list) {
-    cout << "Nhap ten doc gia can chinh sua thong tin: ";
-    string name; getline(cin >> ws, name);
-    ReaderNode* fReader = FindByName(list, name);
+    cout << "Nhap ma doc gia can chinh sua thong tin: ";
+    string ID; cin >> ID;
+    ReaderNode* fReader = FindByID(list, ID);
     if (fReader == NULL) {
-        cout << "Ten doc gia nhap vao khong ton tai hoac chua duoc dang ky!";
+        cout << "Ma doc gia nhap vao khong ton tai hoac chua duoc dang ky!\n";
         return;
     }
+    cout << "\nDoc gia: " << fReader->reader.name << "\n";
     while (1) {
         int option = ReaderInfoChangeOption();
         switch (option) {
@@ -191,7 +192,8 @@ void ReaderInfoChanging(ReaderList* list) {
 
 void FindAllReadersWithName(ReaderList* list) {
     cout << "Nhap ten ban muon tim kiem: ";
-    string name; getline(cin, name);
+    string name; getline(cin >> ws, name);
+    name = ChuanHoaTen(name);
 
     ReaderNode* curReader = list->head;
     bool found = false;
@@ -205,7 +207,7 @@ void FindAllReadersWithName(ReaderList* list) {
         }
     }
     if (!found) {
-        cout << "Khong co doc gia nao co ten trung khop voi ten da nhap!";
+        cout << "Khong co doc gia nao co ten trung khop voi ten da nhap!\n";
     }
 }
 

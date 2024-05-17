@@ -33,16 +33,16 @@ void LapPhieuTraSach(ReaderList *readerList, BookList *bookList) {
             InserLateReturner(reader.ID + " - " + reader.name);
         }
         //
-        bool existed = realReturnDate > addDays(lendCard.borrowDate, 18);
+        lendCard.lost = realReturnDate > addDays(lendCard.borrowDate, 18);
         //
         Book book = lendCard.borrowBook;
         double moneyHaveToPay = book.price * book.number + penalty;
-        if(existed) {
+        if(lendCard.lost) {
             penalty = 0;
             moneyHaveToPay = 2 * book.price * book.number;
         }
         cout << "So tien phai tra: " << moneyHaveToPay << "vnd ";
-        if(existed) {
+        if(lendCard.lost) {
             cout << "(mat sach)\n";
         }
         else if(penalty != 0) {
@@ -77,15 +77,15 @@ void LapPhieuMuonSach(ReaderList *readerList, BookList *bookList) {
             cout << "ISBN khong hop le !\n";
             continue;
         }
-        InputAddLendCard(readerNode, bookNode->book);
-        cout << "Nhap so luong sach muon muon cua sach \"" << bookNode->book.name << "\":\n";
-        unsigned int bookNumber; cin >> bookNumber;
         if(bookNode->book.number == 0) {
             cout << "Sach nay trong thu vien da het\n";
             continue;
         }
+        InputAddLendCard(readerNode, bookNode->book);
+        cout << "Nhap so luong sach muon muon cua sach \"" << bookNode->book.name << "\":\n";
+        unsigned int bookNumber; cin >> bookNumber;
         if(bookNumber > bookNode->book.number) {
-            cout << "So luong sach vuot qua gioi han nen chi muon duoc muon " << bookNode->book.number << " quyen \n"; 
+            cout << "So luong sach vuot qua gioi han nen chi duoc muon " << bookNode->book.number << " quyen \n"; 
             bookNumber = bookNode->book.number;
             bookNode->book.number = 0;
         }
@@ -103,7 +103,9 @@ void TraSachVeThuVien(Reader &reader, BookList *bookList) {
         int number = lendCard.borrowBook.number;
         string ISBN = lendCard.borrowBook.ISBN;
         BookNode *bookNode = BookDuaTrenISBN(bookList, ISBN);
-        bookNode->book.number += number;
+        if(!lendCard.lost) {    // truong hop khong mat sach
+            bookNode->book.number += number;
+        }
     }
     reader.lendCards.clear();
     reader.lendCards.shrink_to_fit();

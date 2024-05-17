@@ -1,8 +1,6 @@
 #pragma once
 #include "BookNode.h"
 
-// using namespace std;
-
 struct BookList {
     BookNode *head;
     BookNode *tail;
@@ -21,4 +19,3 @@ BookNode *BookDuaTrenISBN(BookList *bookList, string ISBN);
 BookNode *BookDuaTrenTenSach(BookList *bookList, string name);
 void XoaThongTinSach(BookList *&bookList); // xoa cmn node luon (oke hay day anh ching <("))
 void TimKiemSachTheoISBN(BookList *bookList);
-void TimKiemSachTheoTenSach(BookList *bookList);

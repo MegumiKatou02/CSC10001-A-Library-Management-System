@@ -2,6 +2,7 @@
 
 LendCard::LendCard() {
     this->codeBorrower = "";
+    this->lost = false;
 }
 
 LendCard::~LendCard() {

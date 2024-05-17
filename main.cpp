@@ -55,7 +55,7 @@ void BookManagement(int option) {
 	case 3: XoaThongTinSach(bookList); break;
 	case 4: ChinhSuaThongTinSach(bookList); break;
 	case 5: TimKiemSachTheoISBN(bookList); break;
-	case 6: TimKiemSachTheoTenSach(bookList); break;
+	case 6: FindAllBooksByName(bookList); break;
 	}
 }
 

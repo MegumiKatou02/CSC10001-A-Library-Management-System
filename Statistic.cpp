@@ -71,6 +71,10 @@ void BorrowedBookStatisticize(ReaderList* readerList) {
 
 void LateReturnerStatisticize(ReaderList *readerList) {
 	cout << "Danh sach doc gia bi tre han:\n";
+	if(lateReturnerStatisticizeNumber.size() == 0) {
+		cout << "Khong ai ca !\n";
+		return;
+	}
 	for(const string &lateRetuner : lateReturnerStatisticizeNumber) {
 		cout << lateRetuner << "\n";
 	}
