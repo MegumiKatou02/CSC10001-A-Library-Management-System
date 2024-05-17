@@ -222,7 +222,7 @@ void FindAllBooksByName(BookList* list) {
     BookNode* curBook = list->head;
     bool found = false;
     for (curBook; curBook != NULL; curBook = curBook->next) {
-        if (curBook->book.ISBN == bookName) {
+        if (curBook->book.ISBN == bookName) { // anh Duy troll v
             if (!found) {
                 cout << "Cac quyen sach co ten tuong ung la: ";
             }
